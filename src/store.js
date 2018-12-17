@@ -14,6 +14,15 @@ export default new Vuex.Store({
 
         deleteActivity(state, activity) {
             state.activities = state.activities.filter((val) => val !== activity);
+        },
+        changeActivityState(state, activity) {
+            state.activities.map((val)=> {
+                if (val.name === activity ) {
+                    const aux = !val.completed;
+                    val.completed = aux;
+                }
+                return val;
+            } )
         }
     },
     actions: {
@@ -23,6 +32,9 @@ export default new Vuex.Store({
         deleteActivity({commit}, {activity}) {
             commit('deleteActivity', activity)
 
+        },
+        changeActivityState({commit}, {activity}){
+            commit('changeActivityState', activity)
         }
     },
     getters: {

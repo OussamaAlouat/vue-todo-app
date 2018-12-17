@@ -4,13 +4,15 @@
 
         <div  v-for="item in activities"  >
             <el-row style="margin-bottom: 0.51rem;">
-                <el-col :span="12">
+                <el-col :span="8">
                     {{item.name}}
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="8">
                     <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle size="small"></el-button>
                 </el-col>
-
+                <el-col :span="8">
+                    <el-button type="success" icon="el-icon-check" circle @click="completeActivity(item)" size="small"></el-button>
+                </el-col>
             </el-row>
         </div>
 
@@ -26,7 +28,9 @@
 
         <div>
             <div style="margin-bottom: 0.51rem; width: 60%; margin-left: 20%">
-                <el-input placeholder="Please input" v-model="activity" size="mini"></el-input>
+                <el-input placeholder="Please input the activity"
+                          v-model="activity" size="mini">
+                </el-input>
             </div>
             <el-button type="primary" icon="el-icon-circle-plus-outline" circle
                        @click="addActivityMethod()"></el-button>
@@ -56,7 +60,7 @@
             }
         },
         methods: {
-            ...mapActions(['addActivity', 'deleteActivity']),
+            ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
             addActivityMethod() {
                 if (this.activity !== '') {
                     const activity = {
@@ -72,6 +76,9 @@
             },
             removeActivity(item) {
                 this.deleteActivity({activity: item})
+            },
+            completeActivity(item) {
+                this.changeActivityState({activity: item})
             }
 
         }
