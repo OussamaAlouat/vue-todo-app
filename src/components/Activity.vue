@@ -1,28 +1,35 @@
 <template>
-    <div>
+    <div class="main">
         <h1>ToDo APP</h1>
-        <div v-for="item in activities">
-            <div>
-                {{item.name}}
-                <button @click="removeActivity(item)"> X</button>
-                <button  type="radio" v-model="item.completed"></button>
-            </div>
+
+        <div  v-for="item in activities"  >
+            <el-row style="margin-bottom: 0.51rem;">
+                <el-col :span="12">
+                    {{item.name}}
+                </el-col>
+                <el-col :span="12">
+                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle></el-button>
+                </el-col>
+            </el-row>
         </div>
 
         <div>
-            <input v-model="activity"/>
-            <button @click="addActivityMethod()">Add</button>
+            <div >
+                <el-input placeholder="Please input" v-model="activity" size="mini"></el-input>
+            </div>
+
+            <el-button type="primary" icon="el-icon-circle-plus-outline" circle @click="addActivityMethod()"></el-button>
         </div>
 
         <div v-if="isWrongActivity">
             Please Write something
         </div>
-
     </div>
 </template>
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+
     export default {
         name: 'Activity',
         data() {
@@ -33,7 +40,7 @@
         },
         computed: {
             ...mapGetters({
-                'activities' : 'getActivities'
+                'activities': 'getActivities'
             }),
             isWrongActivity() {
                 return this.wrong
@@ -61,3 +68,10 @@
         }
     }
 </script>
+
+<style>
+    .main{
+        text-align: center;
+    }
+
+</style>
