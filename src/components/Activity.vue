@@ -14,7 +14,7 @@
         </div>
 
         <div>
-            <div >
+            <div style="margin-bottom: 0.51rem; justify-content: center; width: 60%; margin-left: 20%">
                 <el-input placeholder="Please input" v-model="activity" size="mini"></el-input>
             </div>
 
