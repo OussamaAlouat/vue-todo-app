@@ -1,28 +1,48 @@
 <template>
-    <div>
+    <div class="main">
         <h1>ToDo APP</h1>
-        <div v-for="item in activities">
-            <div>
-                {{item.name}}
-                <button @click="removeActivity(item)"> X</button>
-                <button  type="radio" v-model="item.completed"></button>
-            </div>
+
+        <div  v-for="item in activities"  >
+            <el-row style="margin-bottom: 0.51rem;">
+                <el-col :span="8">
+                    {{item.name}}
+                </el-col>
+                <el-col :span="8">
+                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle size="small"></el-button>
+                </el-col>
+                <el-col :span="8">
+                    <el-button type="success" icon="el-icon-check" circle @click="completeActivity(item)" size="small"></el-button>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div v-if="isWrongActivity" style="margin-bottom: 0.2rem; width: 80%; margin-left: 10%; text-align: center">
+            <el-alert
+                    title="The activity is empty"
+                    type="error"
+                    center="true"
+                    show-icon
+                    closable="false">
+            </el-alert>
         </div>
 
         <div>
-            <input v-model="activity"/>
-            <button @click="addActivityMethod()">Add</button>
+            <div style="margin-bottom: 0.51rem; width: 60%; margin-left: 20%">
+                <el-input placeholder="Please input the activity"
+                          v-model="activity" size="mini">
+                </el-input>
+            </div>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" circle
+                       @click="addActivityMethod()"></el-button>
         </div>
 
-        <div v-if="isWrongActivity">
-            Please Write something
-        </div>
 
     </div>
 </template>
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
+
     export default {
         name: 'Activity',
         data() {
@@ -33,14 +53,14 @@
         },
         computed: {
             ...mapGetters({
-                'activities' : 'getActivities'
+                'activities': 'getActivities'
             }),
             isWrongActivity() {
                 return this.wrong
             }
         },
         methods: {
-            ...mapActions(['addActivity', 'deleteActivity']),
+            ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
             addActivityMethod() {
                 if (this.activity !== '') {
                     const activity = {
@@ -56,8 +76,18 @@
             },
             removeActivity(item) {
                 this.deleteActivity({activity: item})
+            },
+            completeActivity(item) {
+                this.changeActivityState({activity: item})
             }
 
         }
     }
 </script>
+
+<style>
+    .main {
+        text-align: center;
+    }
+
+</style>
