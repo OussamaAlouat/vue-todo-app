@@ -8,22 +8,31 @@
                     {{item.name}}
                 </el-col>
                 <el-col :span="12">
-                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle></el-button>
+                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle size="small"></el-button>
                 </el-col>
+
             </el-row>
         </div>
 
+        <div v-if="isWrongActivity" style="margin-bottom: 0.2rem; width: 80%; margin-left: 10%; text-align: center">
+            <el-alert
+                    title="The activity is empty"
+                    type="error"
+                    center="true"
+                    show-icon
+                    closable="false">
+            </el-alert>
+        </div>
+
         <div>
-            <div style="margin-bottom: 0.51rem; justify-content: center; width: 60%; margin-left: 20%">
+            <div style="margin-bottom: 0.51rem; width: 60%; margin-left: 20%">
                 <el-input placeholder="Please input" v-model="activity" size="mini"></el-input>
             </div>
-
-            <el-button type="primary" icon="el-icon-circle-plus-outline" circle @click="addActivityMethod()"></el-button>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" circle
+                       @click="addActivityMethod()"></el-button>
         </div>
 
-        <div v-if="isWrongActivity">
-            Please Write something
-        </div>
+
     </div>
 </template>
 
@@ -70,7 +79,7 @@
 </script>
 
 <style>
-    .main{
+    .main {
         text-align: center;
     }
 
