@@ -3,7 +3,7 @@
         <h1>ToDo APP</h1>
 
         <div  v-for="item in activities"  >
-            <el-row style="margin-bottom: 0.51rem;">
+            <el-row style="margin-bottom: 0.51rem;" :class="getClass(item)">
                 <el-col :span="8">
                     {{item.name}}
                 </el-col>
@@ -20,9 +20,9 @@
             <el-alert
                     title="The activity is empty"
                     type="error"
-                    center="true"
+                    :center="true"
                     show-icon
-                    closable="false">
+                    :closable="false">
             </el-alert>
         </div>
 
@@ -35,7 +35,6 @@
             <el-button type="primary" icon="el-icon-circle-plus-outline" circle
                        @click="addActivityMethod()"></el-button>
         </div>
-
 
     </div>
 </template>
@@ -65,7 +64,7 @@
                 if (this.activity !== '') {
                     const activity = {
                         name: this.activity,
-                        completed: true
+                        completed: false
                     };
                     this.wrong = false;
                     this.addActivity({activity});
@@ -79,6 +78,9 @@
             },
             completeActivity(item) {
                 this.changeActivityState({activity: item})
+            },
+            getClass (item) {
+                return item.completed=== true ? 'completed': ''
             }
 
         }
@@ -88,6 +90,10 @@
 <style>
     .main {
         text-align: center;
+    }
+
+    .completed {
+        background: rgba(0,0,0,0.3);
     }
 
 </style>
