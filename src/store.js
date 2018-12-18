@@ -17,7 +17,7 @@ export default new Vuex.Store({
         },
         changeActivityState(state, activity) {
             state.activities.map((val)=> {
-                if (val.name === activity ) {
+                if (val.name === activity.name ) {
                     const aux = !val.completed;
                     val.completed = aux;
                 }

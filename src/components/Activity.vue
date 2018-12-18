@@ -2,16 +2,35 @@
     <div class="main">
         <h1>ToDo APP</h1>
 
-        <div  v-for="item in activities"  >
-            <el-row style="margin-bottom: 0.51rem;">
+        <div v-for="item in activities">
+            <el-row style="margin-bottom: 0.51rem;" :class="getClass(item)">
                 <el-col :span="8">
                     {{item.name}}
                 </el-col>
                 <el-col :span="8">
-                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle size="small"></el-button>
+                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle
+                               size="small"></el-button>
                 </el-col>
                 <el-col :span="8">
-                    <el-button type="success" icon="el-icon-check" circle @click="completeActivity(item)" size="small"></el-button>
+                    <el-button type="success" icon="el-icon-check" circle @click="completeActivity(item)"
+                               size="small"></el-button>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div>
+            <el-row style="width: 60%; margin-left: 40%; margin-bottom: 0.24rem;" >
+                <el-col :span="3">
+                    Completed :
+                </el-col>
+                <el-col :span="2">
+                    {{completed}}
+                </el-col>
+                <el-col :span="3">
+                    Total :
+                </el-col>
+                <el-col :span="2">
+                    {{total}}
                 </el-col>
             </el-row>
         </div>
@@ -20,9 +39,9 @@
             <el-alert
                     title="The activity is empty"
                     type="error"
-                    center="true"
+                    :center="true"
                     show-icon
-                    closable="false">
+                    :closable="false">
             </el-alert>
         </div>
 
@@ -35,7 +54,6 @@
             <el-button type="primary" icon="el-icon-circle-plus-outline" circle
                        @click="addActivityMethod()"></el-button>
         </div>
-
 
     </div>
 </template>
@@ -57,7 +75,15 @@
             }),
             isWrongActivity() {
                 return this.wrong
+            },
+            completed() {
+                return this.activities.filter((val) => val.completed === true).length;
+            },
+            total() {
+                return this.activities.length;
             }
+
+
         },
         methods: {
             ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
@@ -65,7 +91,7 @@
                 if (this.activity !== '') {
                     const activity = {
                         name: this.activity,
-                        completed: true
+                        completed: false
                     };
                     this.wrong = false;
                     this.addActivity({activity});
@@ -79,6 +105,9 @@
             },
             completeActivity(item) {
                 this.changeActivityState({activity: item})
+            },
+            getClass(item) {
+                return item.completed === true ? 'completed' : ''
             }
 
         }
@@ -88,6 +117,10 @@
 <style>
     .main {
         text-align: center;
+    }
+
+    .completed {
+        background: rgba(0, 0, 0, 0.3);
     }
 
 </style>
