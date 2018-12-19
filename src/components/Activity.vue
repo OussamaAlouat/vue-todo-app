@@ -1,7 +1,6 @@
 <template>
     <div class="main">
         <h1>ToDo APP</h1>
-
         <div v-for="item in activities">
             <el-row style="margin-bottom: 0.51rem;" :class="getClass(item)">
                 <el-col :span="8">
@@ -37,7 +36,7 @@
 
         <div v-if="isWrongActivity" style="margin-bottom: 0.2rem; width: 80%; margin-left: 10%; text-align: center">
             <el-alert
-                    title="The activity is empty"
+                    title="The activity && the date are empty"
                     type="error"
                     :center="true"
                     show-icon
@@ -46,11 +45,28 @@
         </div>
 
         <div>
-            <div style="margin-bottom: 0.51rem; width: 60%; margin-left: 20%">
-                <el-input placeholder="Please input the activity"
-                          v-model="activity" size="mini">
-                </el-input>
-            </div>
+            <el-row>
+                <el-col :span="3">
+                    Activity:
+                </el-col>
+
+                <el-col :span="8">
+                    <el-input placeholder="Please input the activity"
+                              v-model="activity" size="mini">
+                    </el-input>
+                </el-col>
+
+                <el-col :span="3">
+                    Date:
+                </el-col>
+
+                <el-col :span="8">
+                    <el-input placeholder="Please input the date"
+                              v-model="date" size="mini">
+                    </el-input>
+                </el-col>
+            </el-row>
+
             <el-button type="primary" icon="el-icon-circle-plus-outline" circle
                        @click="addActivityMethod()"></el-button>
         </div>
@@ -66,7 +82,8 @@
         data() {
             return {
                 activity: '',
-                wrong: false
+                wrong: false,
+                date: ''
             }
         },
         computed: {
@@ -88,10 +105,11 @@
         methods: {
             ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
             addActivityMethod() {
-                if (this.activity !== '') {
+                if (this.activity !== '' && this.date !== '') {
                     const activity = {
                         name: this.activity,
-                        completed: false
+                        completed: false,
+                        date: this.date
                     };
                     this.wrong = false;
                     this.addActivity({activity});
