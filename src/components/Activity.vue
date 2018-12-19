@@ -1,7 +1,16 @@
 <template>
     <div class="main">
         <h1>ToDo APP</h1>
-        <div v-for="item in activities">
+        <div v-if="isEmpty">
+            <el-alert
+                    title="There are not activities at this moment"
+                    type="info"
+                    :center="true"
+                    show-icon
+                    :closable="false">
+            </el-alert>
+        </div>
+        <div v-else v-for="item in activities">
             <el-row style="margin-bottom: 0.51rem;" :class="getClass(item)">
                 <el-col :span="6">
                     {{item.name}}
@@ -102,6 +111,9 @@
             },
             total() {
                 return this.activities.length;
+            },
+            isEmpty() {
+                return this.activities.length === 0;
             }
 
 
