@@ -43,8 +43,8 @@
             </el-table>
         </div>
         <div>
-            <el-row class="counterSection">
-                <el-col :span="3">
+            <el-row type="flex" justify="center" class="counterSection">
+                <el-col :span="4">
                     Completed :
                 </el-col>
                 <el-col :span="2">
@@ -211,8 +211,6 @@
 
     .counterSection {
         margin-top: 0.5rem;
-        width: 60%;
-        margin-left: 40%;
         margin-bottom: 0.5rem;
     }
 </style>
