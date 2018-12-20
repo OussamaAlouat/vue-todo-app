@@ -13,7 +13,7 @@
         <div v-else>
             <el-table
                     :data="activities"
-                    border>
+                    :row-class-name="tableRowColor">
                 <el-table-column
                         label="Date">
                     <template slot-scope="scope">
@@ -163,7 +163,15 @@
             getClass(item) {
                 return item.completed === true ? 'completed' : ''
             },
+            tableRowColor({row, rowIndex}) {
+                if (row.completed === true) {
+                    return 'success-row';
+                } else {
 
+                    return 'warning-row'
+                }
+                return '';
+            },
             validateData() {
                 if (this.activity !== '' && this.date !== '') {
                     return true;
@@ -212,5 +220,12 @@
     .counterSection {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
+    }
+    .el-table .warning-row {
+        background: oldlace;
+    }
+
+    .el-table .success-row {
+        background: #f0f9eb;
     }
 </style>
