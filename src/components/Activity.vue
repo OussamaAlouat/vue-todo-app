@@ -210,8 +210,9 @@
     }
 
     .counterSection {
+        margin-top: 0.5rem;
         width: 60%;
         margin-left: 40%;
-        margin-bottom: 0.24rem;
+        margin-bottom: 0.5rem;
     }
 </style>
