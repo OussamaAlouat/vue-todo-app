@@ -10,27 +10,42 @@
                     :closable="false">
             </el-alert>
         </div>
-        <div v-else v-for="item in activities">
-            <el-row style="margin-bottom: 0.51rem;" :class="getClass(item)">
-                <el-col :span="6">
-                    {{item.name}}
-                </el-col>
-                <el-col :span="6">
-                    {{item.date}}
-                </el-col>
-                <el-col :span="6">
-                    <el-button type="danger" icon="el-icon-delete" @click="removeActivity(item)" circle
-                               size="small"></el-button>
-                </el-col>
-                <el-col :span="6">
-                    <el-button type="success" icon="el-icon-check" circle @click="completeActivity(item)"
-                               size="small"></el-button>
-                </el-col>
-            </el-row>
-        </div>
+        <div v-else>
+            <el-table
+                    :data="activities"
+                    border>
+                <el-table-column
+                        label="Date">
+                    <template slot-scope="scope">
+                        <i class="el-icon-time"></i>
+                        <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="Name">
+                </el-table-column>
 
+                <el-table-column
+                        label="Remove">
+                    <template slot-scope="scope">
+                        <el-button type="danger" icon="el-icon-delete" @click="removeActivity(scope.row)" circle
+                                   size="small"></el-button>
+                    </template>
+                </el-table-column>
+
+                <el-table-column
+                        label="Check">
+                    <template slot-scope="scope">
+                        <el-button type="success" icon="el-icon-check" circle @click="completeActivity(scope.row)"
+                                   size="small"></el-button>
+                    </template>
+
+                </el-table-column>
+            </el-table>
+        </div>
         <div>
-            <el-row style="width: 60%; margin-left: 40%; margin-bottom: 0.24rem;" >
+            <el-row style="width: 60%; margin-left: 40%; margin-bottom: 0.24rem;">
                 <el-col :span="3">
                     Completed :
                 </el-col>
@@ -46,7 +61,7 @@
             </el-row>
         </div>
 
-        <div v-if="isWrongActivity" style="margin-bottom: 0.2rem; width: 80%; margin-left: 10%; text-align: center">
+        <div v-if="isWrongActivity" class="wrongNotification">
             <el-alert
                     :title="errorMessage"
                     type="error"
@@ -130,7 +145,7 @@
 
                     this.addActivity({activity});
                     this.activity = '';
-                    this.date= '';
+                    this.date = '';
                     this.wrong = false;
 
                 } else {
@@ -151,7 +166,7 @@
                 return item.completed === true ? 'completed' : ''
             },
 
-            validateData () {
+            validateData() {
                 if (this.activity !== '' && this.date !== '') {
                     return true;
                 } else {
@@ -161,7 +176,7 @@
 
             setMessageError() {
                 if (this.activity === '' && this.date === '') {
-                    this.errorMessage= 'The activity && the date are empty';
+                    this.errorMessage = 'The activity && the date are empty';
                 } else {
                     if (this.activity === '') {
                         this.errorMessage = 'The activity is empty';
@@ -185,4 +200,14 @@
         background: rgba(0, 0, 0, 0.3);
     }
 
+    .wrongNotification {
+        margin-bottom: 0.2rem;
+        width: 80%;
+        margin-left: 10%;
+        text-align: center
+    }
+
+    div.cell{
+        text-align: center;
+    }
 </style>
