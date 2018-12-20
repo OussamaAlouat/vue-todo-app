@@ -22,7 +22,7 @@
                         label="Date">
                     <template slot-scope="scope">
                         <i class="el-icon-time"></i>
-                        <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                        <span style="margin-left: 10px">{{getDate(scope.row.date)}}</span>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -86,9 +86,15 @@
                 </el-col>
 
                 <el-col :span="8">
+                    <el-date-picker
+                            v-model="date"
+                            type="date"
+                            placeholder="Pick a day">
+                    </el-date-picker>
+                    <!--
                     <el-input placeholder="Please input the date: dd/mm/yyyy"
                               v-model="date" size="mini">
-                    </el-input>
+                    </el-input>-->
                 </el-col>
             </el-row>
 
@@ -101,7 +107,7 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-
+    import moment from 'moment'
     export default {
         name: 'Activity',
         data() {
@@ -187,6 +193,10 @@
 
                     }
                 }
+            },
+
+            getDate (item) {
+                return moment(item).format('DD/MM/YYYY')
             }
 
         }
