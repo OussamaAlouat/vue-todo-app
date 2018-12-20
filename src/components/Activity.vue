@@ -25,7 +25,6 @@
                         prop="name"
                         label="Name">
                 </el-table-column>
-
                 <el-table-column
                         label="Remove">
                     <template slot-scope="scope">
@@ -33,7 +32,6 @@
                                    size="small"></el-button>
                     </template>
                 </el-table-column>
-
                 <el-table-column
                         label="Check">
                     <template slot-scope="scope">
@@ -45,7 +43,7 @@
             </el-table>
         </div>
         <div>
-            <el-row style="width: 60%; margin-left: 40%; margin-bottom: 0.24rem;">
+            <el-row class="counterSection">
                 <el-col :span="3">
                     Completed :
                 </el-col>
@@ -207,7 +205,13 @@
         text-align: center
     }
 
-    div.cell{
+    div.cell {
         text-align: center;
+    }
+
+    .counterSection {
+        width: 60%;
+        margin-left: 40%;
+        margin-bottom: 0.24rem;
     }
 </style>
