@@ -15,15 +15,15 @@
                     :data="activities"
                     :row-class-name="tableRowColor">
                 <el-table-column
+                        prop="name"
+                        label="Name">
+                </el-table-column>
+                <el-table-column
                         label="Date">
                     <template slot-scope="scope">
                         <i class="el-icon-time"></i>
                         <span style="margin-left: 10px">{{ scope.row.date }}</span>
                     </template>
-                </el-table-column>
-                <el-table-column
-                        prop="name"
-                        label="Name">
                 </el-table-column>
                 <el-table-column
                         label="Remove">
@@ -213,6 +213,7 @@
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
+
     .el-table .warning-row {
         background: oldlace;
     }
