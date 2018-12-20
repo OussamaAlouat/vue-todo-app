@@ -159,10 +159,6 @@
             completeActivity(item) {
                 this.changeActivityState({activity: item})
             },
-
-            getClass(item) {
-                return item.completed === true ? 'completed' : ''
-            },
             tableRowColor({row, rowIndex}) {
                 if (row.completed === true) {
                     return 'success-row';
@@ -200,10 +196,6 @@
 <style>
     .main {
         text-align: center;
-    }
-
-    .completed {
-        background: rgba(0, 0, 0, 0.3);
     }
 
     .wrongNotification {
