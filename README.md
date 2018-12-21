@@ -1,4 +1,6 @@
 # todo-app
+It is used vue, vuex, element.ui and moment.js to develop the aplication. It is very easy to develop. This application it used to learn more about how to integrate vue with element.iu and vuex.
+
 
 ## Project setup
 ```
