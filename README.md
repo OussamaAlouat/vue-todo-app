@@ -17,3 +17,4 @@ npm run build
 ```
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/OussamaAlouat/vue-todo-app/)
+![](https://img.shields.io/github/issues/OussamaAlouat/vue-todo-app.svg)
