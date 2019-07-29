@@ -13,7 +13,7 @@ export default new Vuex.Store({
         },
 
         deleteActivity(state, activity) {
-            state.activities = state.activities.filter((val) => val !== activity);
+            state.activities = state.activities.filter((val) => val.id !== activity.id);
         },
         changeActivityState(state, activity) {
             state.activities.map((val)=> {
