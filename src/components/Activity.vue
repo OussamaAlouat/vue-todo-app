@@ -108,6 +108,7 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import moment from 'moment'
+    import uuid from 'uuid/v4'
     export default {
         name: 'Activity',
         data() {
@@ -144,7 +145,8 @@
                     const activity = {
                         name: this.activity,
                         completed: false,
-                        date: this.date
+                        date: this.date,
+                        id: uuid()
                     };
 
                     this.addActivity({activity});
