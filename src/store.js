@@ -4,42 +4,43 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {
-        activities: []
+  state: {
+    activities: []
+  },
+  mutations: {
+    addActivity(state, activity) {
+      state.activities.push(activity);
     },
-    mutations: {
-        addActivity(state, activity) {
-            state.activities.push(activity);
-        },
 
-        deleteActivity(state, activity) {
-            state.activities = state.activities.filter((val) => val.id !== activity.id);
-        },
-        changeActivityState(state, activity) {
-            state.activities.map((val)=> {
-                if (val.id === activity.id ) {
-                    const aux = !val.completed;
-                    val.completed = aux;
-                }
-                return val;
-            } )
-        }
+    deleteActivity(state, activity) {
+      state.activities = state.activities.filter((val) => val.id !== activity.id);
     },
-    actions: {
-        addActivity({commit}, {activity}) {
-            commit('addActivity', activity)
-        },
-        deleteActivity({commit}, {activity}) {
-            commit('deleteActivity', activity)
 
-        },
-        changeActivityState({commit}, {activity}){
-            commit('changeActivityState', activity)
+    changeActivityState(state, activity) {
+      state.activities.map((val)=> {
+        if (val.id === activity.id ) {
+          const aux = !val.completed;
+          val.completed = aux;
         }
-    },
-    getters: {
-        getActivities(state) {
-            return state.activities;
-        }
+        return val;
+      });
     }
+  },
+  actions: {
+    addActivity({commit}, {activity}) {
+      commit('addActivity', activity)
+    },
+    deleteActivity({commit}, {activity}) {
+      commit('deleteActivity', activity)
+
+    },
+    changeActivityState({commit}, {activity}){
+      commit('changeActivityState', activity)
+    }
+  },
+  getters: {
+      getActivities(state) {
+          return state.activities;
+      }
+  }
 })
