@@ -10,10 +10,12 @@ export default new Vuex.Store({
   mutations: {
     addActivity(state, activity) {
       state.activities.push(activity);
+      localStorage.setItem('activities', JSON.stringify(state.activities));
     },
 
     deleteActivity(state, activity) {
       state.activities = state.activities.filter((val) => val.id !== activity.id);
+      localStorage.setItem('activities', JSON.stringify(state.activities));
     },
 
     changeActivityState(state, activity) {
@@ -25,6 +27,8 @@ export default new Vuex.Store({
 
         return val;
       });
+
+      localStorage.setItem('activities',JSON.stringify(state.activities));
     }
   },
   actions: {
@@ -40,8 +44,13 @@ export default new Vuex.Store({
     }
   },
   getters: {
-      getActivities(state) {
-        return state.activities;
+    getActivities(state) {
+      const activities = JSON.parse(localStorage.getItem('activities'));
+      if (activities && activities.length > 0) {
+        state.activities = activities;
       }
+  
+      return state.activities;
+    }
   }
 })
