@@ -22,6 +22,7 @@ export default new Vuex.Store({
           const aux = !val.completed;
           val.completed = aux;
         }
+
         return val;
       });
     }
@@ -40,7 +41,7 @@ export default new Vuex.Store({
   },
   getters: {
       getActivities(state) {
-          return state.activities;
+        return state.activities;
       }
   }
 })
