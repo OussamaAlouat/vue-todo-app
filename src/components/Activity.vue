@@ -97,10 +97,6 @@
             type="date"
             placeholder="Pick a day">
           </el-date-picker>
-          <!--
-          <el-input placeholder="Please input the date: dd/mm/yyyy"
-                    v-model="date" size="mini">
-          </el-input>-->
         </el-col>
       </el-row>
       <el-button 
