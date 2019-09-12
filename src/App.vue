@@ -7,7 +7,7 @@
 <script>
   import Activity from "./components/Activity";
   export default {
-      components: {Activity}
+    components: {Activity}
   }
 
 </script>
