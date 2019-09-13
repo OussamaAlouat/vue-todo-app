@@ -64,7 +64,7 @@ git push -f git@github.com:OussamaAlouat/vue-todo-app.git master:gh-pages
 
 cd -
 ```
-2. vue.config.js --> Add this file to root's app.
+2. vue.config.js --> Add this file to root's app. *(I decide put '/vue-todo-app' because is my github project name. You put there your github project name)*
 ```javascript
 module.exports = {
     baseUrl: process.env.NODE_ENV === 'production'
