@@ -1,16 +1,6 @@
 <template>
-  <div class="main container">
-    <h1>ToDo APP</h1>
-    <div v-if="isEmpty">
-      <el-alert
-        title="There are not activities at this moment"
-        type="info"
-        :center="true"
-        show-icon
-        :closable="false">
-      </el-alert>
-      </div>
-      <div v-else>
+  <div>
+    <div v-if="!isEmpty">
         <el-table
           :data="activities"
           :row-class-name="tableRowColor">
@@ -48,8 +38,9 @@
             </template>
           </el-table-column>
         </el-table>
-      </div>
-      <div>
+    </div>
+
+    <div>
       <el-row type="flex" justify="center" class="counterSection">
         <el-col :span="4">
           Completed :
@@ -64,15 +55,6 @@
           {{total}}
         </el-col>
       </el-row>
-    </div>
-    <div v-if="isWrongActivity" class="wrongNotification">
-      <el-alert
-        :title="errorMessage"
-        type="error"
-        :center="true"
-        show-icon
-        :closable="false">
-      </el-alert>
     </div>
 
     <div>
@@ -106,6 +88,7 @@
         @click="addActivityMethod()">
       </el-button>
     </div>
+
   </div>
 </template>
 
@@ -118,18 +101,13 @@
     data() {
       return {
         activity: '',
-        wrong: false,
         date: '',
-        errorMessage: ''
       }
     },
     computed: {
       ...mapGetters({
         'activities': 'getActivities'
       }),
-      isWrongActivity() {
-        return this.wrong
-      },
       completed() {
         return this.activities.filter((val) => val.completed === true).length;
       },
@@ -141,7 +119,7 @@
       }
     },
     methods: {
-      ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
+      ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState', 'setErrorMessageAction']),
       addActivityMethod() {
         if (this.validateData() === true) {
           const activity = {
@@ -150,13 +128,13 @@
             date: this.date,
             id: uuid()
           };
+          this.setErrorMessageAction({message: ''});
 
           this.addActivity({activity});
           this.activity = '';
           this.date = '';
-          this.wrong = false;
+
         } else {
-          this.wrong = true;
           this.setMessageError();
         }
       },
@@ -184,15 +162,19 @@
       },
 
       setMessageError() {
+        let error = '';
         if (this.activity === '' && this.date === '') {
-          this.errorMessage = 'The activity && the date are empty';
+          error = 'The activity && the date are empty';
+
         } else {
           if (this.activity === '') {
-            this.errorMessage = 'The activity is empty';
+            error = 'The activity is empty';
           } else {
-            this.errorMessage = 'The date is empty';
+            error = 'The date is empty';
           }
         }
+
+        this.setErrorMessageAction({message: error});
       },
 
       getDate (item) {
