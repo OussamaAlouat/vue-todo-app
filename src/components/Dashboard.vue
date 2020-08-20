@@ -27,8 +27,6 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import moment from 'moment'
-  import uuid from 'uuid/v4'
   import Activity from './Activity'
 
   export default {
