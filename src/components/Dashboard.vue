@@ -22,17 +22,20 @@
     </div>
 
     <Activity></Activity>
+    <Information-Section></Information-Section>
   </div>
 </template>
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
   import Activity from './Activity'
+  import InformationSection from './InformationSection'
 
   export default {
     name: 'Dashboard',
     components: {
       Activity,
+      InformationSection,
     },
     computed: {
       ...mapGetters({
