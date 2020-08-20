@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main container">
     <h1>ToDo APP</h1>
     <div v-if="isEmpty">
       <el-alert
@@ -207,6 +207,9 @@
 <style>
 .main {
   text-align: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 10px;
 }
 
 .wrongNotification {
