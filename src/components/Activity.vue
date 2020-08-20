@@ -30,7 +30,7 @@
             <template slot-scope="scope">
               <el-button type="danger"
                 icon="el-icon-delete"
-                @click="removeActivity(scope.row)" 
+                @click="openModal(scope.row)"
                 circle
                 size="small">
               </el-button>
@@ -82,9 +82,9 @@
         </el-col>
 
         <el-col :span="8">
-          <el-input 
+          <el-input
             placeholder="Please input the activity"
-            v-model="activity" 
+            v-model="activity"
             size="mini">
           </el-input>
         </el-col>
@@ -99,7 +99,7 @@
           </el-date-picker>
         </el-col>
       </el-row>
-      <el-button 
+      <el-button
         type="primary"
         icon="el-icon-circle-plus-outline"
         circle
@@ -161,13 +161,10 @@
         }
       },
 
-      removeActivity(item) {
-        this.deleteActivity({activity: item})
-      },
-
       completeActivity(item) {
         this.changeActivityState({activity: item})
       },
+
       tableRowColor({row, rowIndex}) {
         if (row.completed === true) {
           return 'success-row';
@@ -177,6 +174,7 @@
 
         return '';
       },
+
       validateData() {
         if (this.activity !== '' && this.date !== '') {
           return true;
@@ -199,6 +197,28 @@
 
       getDate (item) {
         return moment(item).format('DD/MM/YYYY')
+      },
+
+      openModal(item) {
+        const message = `This will permanently delete the activity ${item.name}. Continue?`;
+        this.$confirm(message, 'Warning', {
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Cancel',
+          type: 'warning'
+        }).then(() => {
+          this.deleteActivity({activity: item})
+            .then(() => {
+              this.$message({
+                type: 'success',
+                message: 'Delete completed'
+              });
+            });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: 'Delete canceled'
+          });
+        });
       }
     }
   }
