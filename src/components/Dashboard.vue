@@ -23,6 +23,7 @@
 
     <Activity></Activity>
     <Information-Section></Information-Section>
+    <Input-Section></Input-Section>
   </div>
 </template>
 
@@ -30,12 +31,14 @@
   import {mapGetters, mapActions} from 'vuex'
   import Activity from './Activity'
   import InformationSection from './InformationSection'
+  import InputSection from './InputSection'
 
   export default {
     name: 'Dashboard',
     components: {
       Activity,
       InformationSection,
+      InputSection
     },
     computed: {
       ...mapGetters({
