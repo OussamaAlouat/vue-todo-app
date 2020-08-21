@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    activities: []
+    activities: [],
+    errorMessage: ''
   },
   mutations: {
     addActivity(state, activity) {
@@ -29,6 +30,10 @@ export default new Vuex.Store({
       });
 
       localStorage.setItem('activities',JSON.stringify(state.activities));
+    },
+
+    setErrorMessage(state, message) {
+      state.errorMessage = message;
     }
   },
   actions: {
@@ -41,7 +46,10 @@ export default new Vuex.Store({
     },
     changeActivityState({commit}, {activity}){
       commit('changeActivityState', activity)
-    }
+    },
+    setErrorMessageAction({commit}, {message}) {
+      commit('setErrorMessage', message)
+    },
   },
   getters: {
     getActivities(state) {
@@ -49,8 +57,12 @@ export default new Vuex.Store({
       if (activities && activities.length > 0) {
         state.activities = activities;
       }
-  
+
       return state.activities;
+    },
+
+    getErrorMessage(state) {
+      return state.errorMessage;
     }
   }
 })

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Activity></Activity>
+    <Dashboard></Dashboard>
   </div>
 </template>
 
 <script>
-  import Activity from "./components/Activity";
+  import Dashboard from "./components/Dashboard";
   export default {
-    components: {Activity}
+    components: { Dashboard }
   }
 
 </script>
