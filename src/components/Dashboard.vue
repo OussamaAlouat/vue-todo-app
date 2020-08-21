@@ -21,7 +21,7 @@
       </el-alert>
     </div>
 
-    <Activity></Activity>
+    <Activity v-if="!isEmpty"></Activity>
     <Information-Section></Information-Section>
     <Input-Section></Input-Section>
   </div>
