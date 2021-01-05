@@ -11,7 +11,6 @@ describe('Activity.vue', () => {
   let store;
   let getters;
 
-
   beforeEach(() => {
     getters = {
       getActivities: () => {
@@ -31,5 +30,5 @@ describe('Activity.vue', () => {
     });
 
     expect(wrapper).toBeTruthy();
-  })
+  });
 })
