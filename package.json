@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "element-ui": "^2.14.1",
@@ -17,7 +18,9 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.9",
     "@vue/cli-service": "^3.8.4",
+    "@vue/test-utils": "^1.0.3",
     "serve-static": "^1.14.1",
     "vue-template-compiler": "^2.6.12"
   },
