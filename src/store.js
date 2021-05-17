@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     activities: [],
-    errorMessage: ''
+    errorMessage: '',
   },
   mutations: {
     addActivity(state, activity) {
@@ -20,8 +20,8 @@ export default new Vuex.Store({
     },
 
     changeActivityState(state, activity) {
-      state.activities.map((val)=> {
-        if (val.id === activity.id ) {
+      state.activities.map((val) => {
+        if (val.id === activity.id) {
           const aux = !val.completed;
           val.completed = aux;
         }
@@ -29,26 +29,25 @@ export default new Vuex.Store({
         return val;
       });
 
-      localStorage.setItem('activities',JSON.stringify(state.activities));
+      localStorage.setItem('activities', JSON.stringify(state.activities));
     },
 
     setErrorMessage(state, message) {
       state.errorMessage = message;
-    }
+    },
   },
   actions: {
-    addActivity({commit}, {activity}) {
-      commit('addActivity', activity)
+    addActivity({ commit }, { activity }) {
+      commit('addActivity', activity);
     },
-    deleteActivity({commit}, {activity}) {
-      commit('deleteActivity', activity)
-
+    deleteActivity({ commit }, { activity }) {
+      commit('deleteActivity', activity);
     },
-    changeActivityState({commit}, {activity}){
-      commit('changeActivityState', activity)
+    changeActivityState({ commit }, { activity }) {
+      commit('changeActivityState', activity);
     },
-    setErrorMessageAction({commit}, {message}) {
-      commit('setErrorMessage', message)
+    setErrorMessageAction({ commit }, { message }) {
+      commit('setErrorMessage', message);
     },
   },
   getters: {
@@ -63,6 +62,6 @@ export default new Vuex.Store({
 
     getErrorMessage(state) {
       return state.errorMessage;
-    }
-  }
-})
+    },
+  },
+});

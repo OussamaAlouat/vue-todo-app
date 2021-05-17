@@ -41,65 +41,63 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
-  import moment from 'moment'
-  import uuid from 'uuid/v4'
-  export default {
-    name: 'Activity',
-    data() {
-      return {
-        activity: '',
-        date: '',
+import { mapGetters, mapActions } from 'vuex';
+import moment from 'moment';
+
+export default {
+  name: 'Activity',
+  data() {
+    return {
+      activity: '',
+      date: '',
+    };
+  },
+  computed: {
+    ...mapGetters({
+      activities: 'getActivities',
+    }),
+  },
+  methods: {
+    ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
+    completeActivity(item) {
+      this.changeActivityState({ activity: item });
+    },
+
+    tableRowColor({ row, rowIndex }) {
+      if (row.completed === true) {
+        return 'success-row';
       }
+
+      return 'warning-row';
     },
-    computed: {
-      ...mapGetters({
-        'activities': 'getActivities'
-      }),
+
+    getDate(item) {
+      return moment(item).format('DD/MM/YYYY');
     },
-    methods: {
-      ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
-      completeActivity(item) {
-        this.changeActivityState({activity: item})
-      },
 
-      tableRowColor({row, rowIndex}) {
-        if (row.completed === true) {
-          return 'success-row';
-        } else {
-          return 'warning-row'
-        }
-
-        return '';
-      },
-
-      getDate (item) {
-        return moment(item).format('DD/MM/YYYY')
-      },
-
-      openModal(item) {
-        const message = `This will permanently delete the activity ${item.name}. Continue?`;
-        this.$confirm(message, 'Warning', {
-          confirmButtonText: 'OK',
-          cancelButtonText: 'Cancel',
-          type: 'warning'
-        }).then(() => {
-          this.deleteActivity({activity: item})
-            .then(() => {
-              this.$message({
-                type: 'success',
-                message: 'Delete completed'
-              });
+    openModal(item) {
+      const message = `This will permanently delete the activity ${item.name}. Continue?`;
+      this.$confirm(message, 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+      }).then(() => {
+        this.deleteActivity({ activity: item })
+          .then(() => {
+            this.$message({
+              type: 'success',
+              message: 'Delete completed',
             });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: 'Delete canceled'
           });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete canceled',
         });
-      }
-    }
-  }
+      });
+    },
+  },
+};
 </script>
 
 <style>

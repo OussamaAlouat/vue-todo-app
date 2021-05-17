@@ -2,10 +2,11 @@ import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import ElementUi from 'element-ui';
 
-import DashBoard from '@/components/DashBoard.vue';
+import DashBoard from '@/components/Dashboard.vue';
 import Activity from '@/components/Activity.vue';
-import InformationSection from '@/components/InformationSection'
-import InputSection from '@/components/InputSection'
+import InformationSection from '@/components/InformationSection.vue';
+import InputSection from '@/components/InputSection.vue';
+
 describe('DashBoard.vue', () => {
   const localVue = createLocalVue();
   localVue.use(Vuex);
@@ -14,21 +15,16 @@ describe('DashBoard.vue', () => {
   let store;
   let getters;
 
-
   beforeEach(() => {
     getters = {
-      getActivities: () => {
-        return [];
-      },
-      getErrorMessage: () => {
-        return '';
-      }
+      getActivities: () => [],
+      getErrorMessage: () => '',
     };
 
     store = new Vuex.Store({
-      getters
-    })
-  })
+      getters,
+    });
+  });
 
   it('render DashBoard component', () => {
     const wrapper = shallowMount(DashBoard, {
@@ -37,10 +33,10 @@ describe('DashBoard.vue', () => {
       components: {
         Activity,
         InformationSection,
-        InputSection
-      }
+        InputSection,
+      },
     });
 
     expect(wrapper).toBeTruthy();
-  })
-})
+  });
+});

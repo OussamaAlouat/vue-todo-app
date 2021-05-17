@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import InputSection from '@/components/InputSection.vue';
 import Vuex from 'vuex';
 import ElementUi from 'element-ui';
@@ -11,15 +11,15 @@ describe('InputSection.vue', () => {
 
   beforeEach(() => {
     store = new Vuex.Store({
-    })
-  })
+    });
+  });
 
   it('render InputSection component', () => {
     const wrapper = shallowMount(InputSection, {
       localVue,
-      store
+      store,
     });
 
     expect(wrapper).toBeTruthy();
-  })
-})
+  });
+});
