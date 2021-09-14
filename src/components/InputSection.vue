@@ -33,63 +33,58 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-  import uuid from 'uuid/v4'
+import { mapActions } from 'vuex';
+import uuid from 'uuid/v4';
 
-  export default {
-    name: 'InputSection',
-    data() {
-      return {
-        activity: '',
-        date: '',
+export default {
+  name: 'InputSection',
+  data() {
+    return {
+      activity: '',
+      date: '',
+    };
+  },
+  methods: {
+    ...mapActions(['addActivity', 'setErrorMessageAction']),
+    addActivityMethod() {
+      if (this.validateData() === true) {
+        const activity = {
+          name: this.activity,
+          completed: false,
+          date: this.date,
+          id: uuid(),
+        };
+        this.setErrorMessageAction({ message: '' });
+
+        this.addActivity({ activity });
+        this.activity = '';
+        this.date = '';
+      } else {
+        this.setMessageError();
       }
     },
-    methods: {
-      ...mapActions(['addActivity', 'setErrorMessageAction']),
-      addActivityMethod() {
-        if (this.validateData() === true) {
-          const activity = {
-            name: this.activity,
-            completed: false,
-            date: this.date,
-            id: uuid()
-          };
-          this.setErrorMessageAction({message: ''});
 
-          this.addActivity({activity});
-          this.activity = '';
-          this.date = '';
+    validateData() {
+      if (this.activity !== '' && this.date !== '') {
+        return true;
+      }
+      return false;
+    },
 
-        } else {
-          this.setMessageError();
-        }
-      },
+    setMessageError() {
+      let error = '';
+      if (this.activity === '' && this.date === '') {
+        error = 'The activity && the date are empty';
+      } else if (this.activity === '') {
+        error = 'The activity is empty';
+      } else {
+        error = 'The date is empty';
+      }
 
-      validateData() {
-        if (this.activity !== '' && this.date !== '') {
-          return true;
-        } else {
-          return false;
-        }
-      },
-
-      setMessageError() {
-        let error = '';
-        if (this.activity === '' && this.date === '') {
-          error = 'The activity && the date are empty';
-
-        } else {
-          if (this.activity === '') {
-            error = 'The activity is empty';
-          } else {
-            error = 'The date is empty';
-          }
-        }
-
-        this.setErrorMessageAction({message: error});
-      },
-    }
-  }
+      this.setErrorMessageAction({ message: error });
+    },
+  },
+};
 </script>
 
 <style>

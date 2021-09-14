@@ -20,21 +20,22 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-  export default {
-    name: 'InformationSection',
-    computed: {
-      ...mapGetters({
-        'activities': 'getActivities'
-      }),
-      completed() {
-        return this.activities.filter((val) => val.completed === true).length;
-      },
-      total() {
-        return this.activities.length;
-      },
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'InformationSection',
+  computed: {
+    ...mapGetters({
+      activities: 'getActivities',
+    }),
+    completed() {
+      return this.activities.filter((val) => val.completed === true).length;
     },
-  }
+    total() {
+      return this.activities.length;
+    },
+  },
+};
 </script>
 
 <style>

@@ -28,31 +28,31 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
-  import Activity from './Activity'
-  import InformationSection from './InformationSection'
-  import InputSection from './InputSection'
+import { mapGetters } from 'vuex';
+import Activity from './Activity.vue';
+import InformationSection from './InformationSection.vue';
+import InputSection from './InputSection.vue';
 
-  export default {
-    name: 'Dashboard',
-    components: {
-      Activity,
-      InformationSection,
-      InputSection
+export default {
+  name: 'Dashboard',
+  components: {
+    Activity,
+    InformationSection,
+    InputSection,
+  },
+  computed: {
+    ...mapGetters({
+      activities: 'getActivities',
+      errorMessage: 'getErrorMessage',
+    }),
+    isEmpty() {
+      return this.activities.length === 0;
     },
-    computed: {
-      ...mapGetters({
-        'activities': 'getActivities',
-        'errorMessage': 'getErrorMessage'
-      }),
-      isEmpty() {
-        return this.activities.length === 0;
-      },
-      isWrongActivity() {
-        return this.errorMessage.length > 0;
-      }
+    isWrongActivity() {
+      return this.errorMessage.length > 0;
     },
-  }
+  },
+};
 </script>
 
 <style>

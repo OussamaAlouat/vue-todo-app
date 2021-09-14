@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import InformationSection from '@/components/InformationSection.vue';
 import Vuex from 'vuex';
 import ElementUi from 'element-ui';
@@ -13,22 +13,20 @@ describe('InformationSection.vue', () => {
 
   beforeEach(() => {
     getters = {
-      getActivities: () => {
-        return [];
-      }
+      getActivities: () => [],
     };
 
     store = new Vuex.Store({
-      getters
-    })
-  })
+      getters,
+    });
+  });
 
   it('render InformationSection component', () => {
     const wrapper = shallowMount(InformationSection, {
       localVue,
-      store
+      store,
     });
 
     expect(wrapper).toBeTruthy();
-  })
-})
+  });
+});
