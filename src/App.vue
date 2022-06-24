@@ -5,10 +5,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Dashboard from './components/Dashboard.vue';
 
 export default {
   components: { Dashboard },
+  mounted() {
+    this.initData();
+  },
+  methods: {
+    ...mapActions(['initData']),
+  },
 };
 
 </script>
