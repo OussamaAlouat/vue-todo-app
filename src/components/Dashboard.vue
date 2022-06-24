@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import Activity from './Activity.vue';
 import InformationSection from './InformationSection.vue';
 import InputSection from './InputSection.vue';
@@ -41,10 +41,7 @@ export default {
     InputSection,
   },
   computed: {
-    ...mapGetters({
-      activities: 'getActivities',
-      errorMessage: 'getErrorMessage',
-    }),
+    ...mapState(['activities', 'errorMessage']),
     isEmpty() {
       return this.activities.length === 0;
     },
