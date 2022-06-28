@@ -13,16 +13,16 @@ describe('DashBoard.vue', () => {
   localVue.use(ElementUi);
 
   let store;
-  let getters;
+  let state;
 
   beforeEach(() => {
-    getters = {
-      getActivities: () => [],
-      getErrorMessage: () => '',
+    state = {
+      activities: () => [],
+      errorMessage: () => '',
     };
 
     store = new Vuex.Store({
-      getters,
+      state,
     });
   });
 

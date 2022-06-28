@@ -9,6 +9,10 @@ export default new Vuex.Store({
     errorMessage: '',
   },
   mutations: {
+    LOAD_DATA(state, activities) {
+      state.activities = activities;
+    },
+
     addActivity(state, activity) {
       state.activities.push(activity);
       localStorage.setItem('activities', JSON.stringify(state.activities));
@@ -49,19 +53,11 @@ export default new Vuex.Store({
     setErrorMessageAction({ commit }, { message }) {
       commit('setErrorMessage', message);
     },
-  },
-  getters: {
-    getActivities(state) {
+    initData({ commit }) {
       const activities = JSON.parse(localStorage.getItem('activities'));
       if (activities && activities.length > 0) {
-        state.activities = activities;
+        commit('LOAD_DATA', activities);
       }
-
-      return state.activities;
-    },
-
-    getErrorMessage(state) {
-      return state.errorMessage;
     },
   },
 });

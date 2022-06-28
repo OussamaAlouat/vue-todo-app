@@ -20,14 +20,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'InformationSection',
   computed: {
-    ...mapGetters({
-      activities: 'getActivities',
-    }),
+    ...mapState(['activities']),
     completed() {
       return this.activities.filter((val) => val.completed === true).length;
     },

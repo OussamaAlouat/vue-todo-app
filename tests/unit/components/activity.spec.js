@@ -9,15 +9,15 @@ describe('Activity.vue', () => {
   localVue.use(ElementUi);
 
   let store;
-  let getters;
+  let state;
 
   beforeEach(() => {
-    getters = {
-      getActivities: () => [],
+    state = {
+      activities: () => [],
     };
 
     store = new Vuex.Store({
-      getters,
+      state,
     });
   });
 

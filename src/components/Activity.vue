@@ -11,7 +11,7 @@
         label="Date">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
-          <span style="margin-left: 10px">{{getDate(scope.row.date)}}</span>
+          <span style="margin-left: 10px">{{ getDate(scope.row.date) }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import moment from 'moment';
 
 export default {
@@ -53,9 +53,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      activities: 'getActivities',
-    }),
+    ...mapState(['activities']),
   },
   methods: {
     ...mapActions(['addActivity', 'deleteActivity', 'changeActivityState']),
@@ -63,7 +61,7 @@ export default {
       this.changeActivityState({ activity: item });
     },
 
-    tableRowColor({ row, rowIndex }) {
+    tableRowColor({ row }) {
       if (row.completed === true) {
         return 'success-row';
       }
