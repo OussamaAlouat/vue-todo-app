@@ -60,9 +60,4 @@ export default new Vuex.Store({
       }
     },
   },
-  getters: {
-    getErrorMessage(state) {
-      return state.errorMessage;
-    },
-  },
 });
