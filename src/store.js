@@ -61,9 +61,6 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    getActivities(state) {
-      return state.activities;
-    },
     getErrorMessage(state) {
       return state.errorMessage;
     },
