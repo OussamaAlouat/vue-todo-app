@@ -29,12 +29,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import Activity from './Activity.vue';
+import Activity from './ActivityComponent.vue';
 import InformationSection from './InformationSection.vue';
 import InputSection from './InputSection.vue';
 
 export default {
-  name: 'Dashboard',
+  name: 'DashboardComponent',
   components: {
     Activity,
     InformationSection,

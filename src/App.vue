@@ -6,7 +6,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import Dashboard from './components/Dashboard.vue';
+import Dashboard from './components/DashboardComponent.vue';
 
 export default {
   components: { Dashboard },

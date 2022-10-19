@@ -1,7 +1,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import InformationSection from '@/components/InformationSection.vue';
 import Vuex from 'vuex';
 import ElementUi from 'element-ui';
+import InformationSection from '@/components/InformationSection.vue';
 
 describe('InformationSection.vue', () => {
   const localVue = createLocalVue();
