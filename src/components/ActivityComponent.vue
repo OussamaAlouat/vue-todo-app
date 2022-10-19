@@ -45,7 +45,7 @@ import { mapActions, mapState } from 'vuex';
 import moment from 'moment';
 
 export default {
-  name: 'Activity',
+  name: 'ActivityComponent',
   data() {
     return {
       activity: '',
