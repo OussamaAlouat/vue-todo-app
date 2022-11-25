@@ -26,7 +26,7 @@ describe('InformationSection.vue', () => {
       localVue,
       store,
     });
-
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper).toBeTruthy();
   });
 });

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSection.vue render InputSection component 1`] = `
+<div>
+  <el-row-stub tag="div" justify="start">
+    <el-col-stub span="3" tag="div">
+      Activity:
+    </el-col-stub>
+    <el-col-stub span="8" tag="div">
+      <el-input-stub value="" size="mini" type="text" autocomplete="off" validateevent="true" placeholder="Please input the activity"></el-input-stub>
+    </el-col-stub>
+    <el-col-stub span="3" tag="div">
+      Date:
+    </el-col-stub>
+    <el-col-stub span="8" tag="div">
+      <el-date-picker-stub appendtobody="true" offset="0" boundariespadding="5" arrowoffset="35" transformorigin="true" placeholder="Pick a day" clearicon="el-icon-circle-close" name="" clearable="true" id="" editable="true" align="left" value="" rangeseparator="-" validateevent="true" type="date"></el-date-picker-stub>
+    </el-col-stub>
+  </el-row-stub>
+  <el-button-stub type="primary" icon="el-icon-circle-plus-outline" nativetype="button" circle="true"></el-button-stub>
+</div>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashBoard.vue render DashBoard component 1`] = `
+<div class="main container">
+  <h1>ToDo APP</h1>
+  <div>
+    <el-alert-stub title="There are not activities at this moment" description="" type="info" closetext="" showicon="true" center="true" effect="light"></el-alert-stub>
+  </div>
+  <!---->
+  <!---->
+  <information-section-stub></information-section-stub>
+  <input-section-stub></input-section-stub>
+</div>
+`;

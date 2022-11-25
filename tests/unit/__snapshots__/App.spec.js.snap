@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App.vue render App component 1`] = `
+<div>
+  <dashboard-stub></dashboard-stub>
+</div>
+`;

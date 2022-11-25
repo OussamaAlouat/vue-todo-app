@@ -11,7 +11,11 @@ describe('App.vue', () => {
   let store;
 
   beforeEach(() => {
-    store = new Vuex.Store({});
+    store = new Vuex.Store({
+      actions: {
+        initData: () => jest.fn(),
+      },
+    });
   });
 
   it('render App component', () => {
@@ -20,6 +24,7 @@ describe('App.vue', () => {
       store,
     });
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper).toBeTruthy();
   });
 });

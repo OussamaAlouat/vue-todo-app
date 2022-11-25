@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InformationSection.vue render InformationSection component 1`] = `
+<div>
+  <div>
+    <el-row-stub tag="div" type="flex" justify="center" class="counterSection">
+      <el-col-stub span="4" tag="div">
+        Completed :
+      </el-col-stub>
+      <el-col-stub span="2" tag="div">
+        0
+      </el-col-stub>
+      <el-col-stub span="3" tag="div">
+        Total :
+      </el-col-stub>
+      <el-col-stub span="2" tag="div">
+        0
+      </el-col-stub>
+    </el-row-stub>
+  </div>
+</div>
+`;
