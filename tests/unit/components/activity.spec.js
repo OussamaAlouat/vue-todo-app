@@ -13,11 +13,15 @@ describe('Activity.vue', () => {
 
   beforeEach(() => {
     state = {
-      activities: () => [],
+      activities: [],
+    };
+    const actions = {
+      initData: () => jest.fn(),
     };
 
     store = new Vuex.Store({
       state,
+      actions,
     });
   });
 
