@@ -38,5 +38,6 @@ describe('DashBoard.vue', () => {
     });
 
     expect(wrapper).toBeTruthy();
+    expect(wrapper).toMatchSnapshot();
   });
 });

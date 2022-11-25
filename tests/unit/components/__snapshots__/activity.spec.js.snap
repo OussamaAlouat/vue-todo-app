@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Activity.vue render Activity component 1`] = `
+<div>
+  <el-table-stub data="" fit="true" showheader="true" rowclassname="[Function]" selectonindeterminate="true" indent="16" treeprops="[object Object]">
+    <el-table-column-stub type="default" label="Name" prop="name" resizable="true" filtermultiple="true" sortorders="ascending,descending,"></el-table-column-stub>
+    <el-table-column-stub type="default" label="Date" resizable="true" filtermultiple="true" sortorders="ascending,descending,"></el-table-column-stub>
+    <el-table-column-stub type="default" label="Remove" resizable="true" filtermultiple="true" sortorders="ascending,descending,"></el-table-column-stub>
+    <el-table-column-stub type="default" label="Check" resizable="true" filtermultiple="true" sortorders="ascending,descending,"></el-table-column-stub>
+  </el-table-stub>
+</div>
+`;

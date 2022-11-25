@@ -20,6 +20,7 @@ describe('InputSection.vue', () => {
       store,
     });
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper).toBeTruthy();
   });
 });

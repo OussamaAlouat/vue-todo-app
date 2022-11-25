@@ -24,6 +24,7 @@ describe('App.vue', () => {
       store,
     });
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper).toBeTruthy();
   });
 });
