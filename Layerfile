@@ -4,11 +4,11 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 RUN sudo npm install npm@8.1.2 -g
 
-
 COPY . .
 RUN npm install --save core-js
 RUN npm install -g serve
 RUN npm install
 RUN npm run build
-RUN BACKGROUND serve -s build
+RUN sudo apt install xsel
+RUN BACKGROUND serve -s dist
 EXPOSE WEBSITE http://localhost:3000
