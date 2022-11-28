@@ -36,11 +36,13 @@ npm run build
 
 #### Deploy on webapp.io
 1. Fork this repository (with the Layerfile).
-2. Create a free account at webapp.io.
+2. Create a free account at [webapp.io](https://webapp.io).
 3. Install webapp.io on your GitHub.
     + Make sure that webapp.io has access to this forked repository.
 4. Push to your forked repository.
-5. Click on the "Deploy" button after the VM is built, and select a domain to deploy to.
+    + Force push to the master branch if needed.
+5. Wait for the Layerfile to finish running on the "Recent Commits" page
+5. Click on the "Deploy" button after the Layerfile finishes successfully, and select a domain to deploy to.
 
 For more information, check out the webapp.io [docs on hosting](https://docs.webapp.io/hosting/introduction).
 
