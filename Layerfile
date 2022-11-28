@@ -7,6 +7,8 @@ RUN sudo npm install npm@8.1.2 -g
 
 COPY . .
 RUN npm install --save core-js
+RUN npm install -g serve
 RUN npm install
-RUN BACKGROUND npm run serve
-EXPOSE WEBSITE http://localhost:8080
+RUN npm run build
+RUN BACKGROUND serve -s build
+EXPOSE WEBSITE http://localhost:3000
