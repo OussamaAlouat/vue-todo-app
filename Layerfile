@@ -7,5 +7,5 @@ RUN sudo npm install npm@8.1.2 -g
 
 COPY . .
 RUN npm install
-RUN BACKGROUND npm start
-EXPOSE WEBSITE http://localhost:5000
+RUN BACKGROUND npm run serve
+EXPOSE WEBSITE http://localhost:8080
